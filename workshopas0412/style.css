@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+
+
+
+
+
+}
+ p{
+    position: absolute;
+    bottom: 150px;
+    font-size: 2rem;
+    width: 800px;
+    text-wrap: wrap;
+    height: 150
+    
+
+ }
+
+
+img {
+    width: 100px;
+}
+
+
+button {
+    position: absolute;
+    padding: 20px 30px;
+    cursor: pointer;
+    border: none;
+    opacity: 100%;
+
+}

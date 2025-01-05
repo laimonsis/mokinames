@@ -1,0 +1,30 @@
+#uzduotis7 {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#uzduotis8 {
+    line-height:  24px;
+    font-size: 38px;
+
+}
+
+uzduotis8 {
+    width: 10px;
+    height: 10px;
+    color: green;
+    display: inline-block;
+}
+
+uzduotis9 {
+    width: 10px;
+    height: 10px;
+    color: green;
+    display: inline-block;
+}

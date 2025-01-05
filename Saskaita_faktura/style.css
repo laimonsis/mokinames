@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+.invoice-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+.header,
+.footer {
+  text-align: center;
+}
+.header h1 {
+  margin: 0;
+  color: #333;
+}
+.info,
+.items,
+.totals {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+.info td {
+  padding: 5px;
+}
+.items th,
+.items td,
+.totals th,
+.totals td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.items th {
+  background-color: #f9f9f9;
+}
+.totals td {
+  font-weight: bold;
+}

@@ -1,0 +1,13 @@
+{
+    "seller": {
+        "name": "AB Sakalauskas",
+        "address": "Kauno alėja 39, Telšiai",
+        "vat": "LT139467942",
+        "phone": "+370 46 56 33 60",
+        "email": "julija33@zabele.lt"
+    },
+    "buyer": {
+        "name": "UAB Pirkėjas",
+        "address": "Vilniaus g. 10, Vilnius"
+    }
+}

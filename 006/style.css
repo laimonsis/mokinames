@@ -1,0 +1,136 @@
+:root {
+    --blue: #20193b;
+    --container-width: 500px;
+    --trans: all 2.5s;
+    --rabbit-color: rgb(136, 230, 13);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Oswald", sans-serif;
+}
+
+header {
+    background-color: var(--blue);
+    padding: 30px 20px;
+}
+
+header nav {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 20px 0 100px;
+}
+
+header nav svg {
+    width: 90px;
+    fill: goldenrod;
+    position: absolute;
+    top: -20px;
+    left: -5%;
+}
+
+header nav a {
+    color: goldenrod;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 30px;
+    line-height: 1.6;
+    transition: var(--trans);
+}
+
+header nav a:hover {
+    color: var(--rabbit-color);
+}
+
+.ether1 {
+    width: 100%;
+    height: calc(100vh - 105px);
+    position: relative;
+    font-size: 0;
+}
+
+.ether1 img {
+    width: 105%;
+    height: 105%;
+    object-fit: cover;
+}
+
+
+
+.ether1-text {
+    width: 20%;
+    position: absolute;
+    bottom: 120px;
+    left: 100px;
+}
+
+.ether1-text-holder {
+    width: 100;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 20%;
+    box-sizing: border-box;
+}
+
+
+.ether1-text h1 {
+        font-size: 60px;
+        color: var(--blue);
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+.ether1-text p {
+    font-weight: 200;
+    font-size: 20px;
+    color: white;
+    margin: 0;
+    max-width: 600px;
+}
+
+.stats {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.stats-bin {
+    margin-top: 100px;
+    margin-bottom: 100px; 
+width: 100%;
+max-width: var(--container-width);
+height: 500%;
+display: flex;
+padding: 0 30px;
+justify-content: space-between;
+flex-direction: row;
+
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid grey;
+}
+
+.stats h4 {
+    font-size: 60px;
+    color: var(--blue);
+    margin: 0;
+}
+
+.stat p {
+    font-size: 20px;
+    color: grey;
+    margin: 0;
+    text-align: center;
+}

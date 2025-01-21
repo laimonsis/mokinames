@@ -1,55 +1,95 @@
-import './app.css';
-import Auto from './Components/Auto';
-import Namas from './Components/Namas';
-import Parkas from './Components/Parkas';
-import RandomColor from './Components/RandomColor';
-import Volvo from './Components/Volvo';
+import './crud.scss';
+import { v4 as uuidv4 } from 'uuid';
 
-import rand from './Functions/rand';
-import randomColor from './Functions/randomColor';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import kazka from './Functions/demoEx';
+import { URL } from './Constants/crud';
 
-import C, { A, B } from './Functions/demoEx';
-
-import * as demo from './Functions/demoEx';
+import Create from './Components/crud/Create';
+import List from './Components/crud/List';
+import Edit from './Components/crud/Edit';
 
 
-function App() {
+export default function App() {
+
+    console.log('APP RENDER');
+
+
+
+    const [data, setData] = useState(null);
+    const [createData, setCreateData] = useState(null);
+    const [storeData, setStoreData] = useState(null);
+    const [editData, setEditData] = useState(null);
+    const [updateData, setUpdateData] = useState(null);
+
+
+    useEffect(_ => {
+        axios.get(URL)
+            .then(response => {
+                console.log(response.data);
+                setData(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
+    }, []);
+
+
+    useEffect(_ => {
+        if (null === storeData) {
+            return;
+        }
+        const id = uuidv4();
+        setData(d => [{ id, ...storeData, temp: true }, ...d]);
+
+        axios.post(URL, storeData)
+            .then(response => {
+                console.log(response);
+                setData(d => d.map(planet => {
+                    if (planet.id === id) {
+                        delete planet.temp;
+                        return { id: response.data.id, ...storeData };
+                    }
+                    return planet;
+                }));
+
+            })
+            .catch(_ => {
+
+                setData(d => {
+                    const oldCreateData = d.find(planet => planet.id === id);
+                    setCreateData(oldCreateData);
+                    
+                    return d.filter(planet => planet.id !== id);
+                });
+            });
+
+
+
+        console.log('APP USE EFFECT storeData');
+
+    }, [storeData]);
+
+
 
     return (
-        <div className="app">
-            <header className="app-header">
-
-                {kazka()} {A()} {B()} {C()}
-
-                {demo.A()} {demo.B()} {demo.default()}
-
-                {/* <Namas numeris='1' spalva='red' kiekis='5' atsFun={rand} />
-               <Namas numeris='2' spalva='green' kiekis='8' atsFun={rand} />
-               <Namas numeris='3' spalva='blue' kiekis='1' atsFun={rand} /> */}
-
-                {/* <Parkas koks={rand(1, 4)} /> */}
-
-                <Auto text={<RandomColor ct="bla" />}>
-                    <h1>Opel</h1>
-                </Auto>
-                <Auto text={<RandomColor ct="ku ku" />}>
-                    <h3>BMW</h3>
-                </Auto>
-
-                <Auto text={<RandomColor />}><Volvo /></Auto>
-
-                <h2 style={{
-                    position: 'relative',
-                    top: rand(-300, 300) + 'px',
-                    color: randomColor(),
-                    letterSpacing: rand(5, 30) + 'px',
-                }}>REACT<RandomColor /></h2>
-
-            </header>
+        <>
+        <div className="container">
+            <div className="row">
+                <div className="col-4">
+                    <Create setStoreData={setStoreData} createData={createData} />
+                </div>
+                <div className="col-8">
+                    <List data={data} />
+                </div>
+            </div>
         </div>
+        {
+            editData !== null && <Edit />
+        }
+        </>
     );
 }
-
-export default App;
